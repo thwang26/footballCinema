@@ -62,3 +62,7 @@
     * 예매한 좌석, 예매 가격등을 저장합니다.
 11. 거래
     * 결제, 환불등의 정보를 저장합니다.
+
+Trouble Shooting
+---
+[go to the trouble shooting section](TROUBLE_SHOOTING.md)

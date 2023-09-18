@@ -12,6 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class ErrorResponse {
-    private ErrorCode errorCode;
-    private String errorMessage;
+
+  private ErrorCode errorCode;
+  private String errorMessage;
 }

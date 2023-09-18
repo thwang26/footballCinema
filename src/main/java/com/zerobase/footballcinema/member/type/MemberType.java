@@ -1,5 +1,7 @@
 package com.zerobase.footballcinema.member.type;
 
-public enum MemberType {
-    USER;
+import com.zerobase.footballcinema.global.security.AccountType;
+
+public enum MemberType implements AccountType {
+  USER;
 }

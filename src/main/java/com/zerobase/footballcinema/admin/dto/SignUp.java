@@ -1,7 +1,7 @@
-package com.zerobase.footballcinema.member.dto;
+package com.zerobase.footballcinema.admin.dto;
 
-import com.zerobase.footballcinema.member.domain.Member;
-import com.zerobase.footballcinema.member.type.MemberType;
+import com.zerobase.footballcinema.admin.domain.Admin;
+import com.zerobase.footballcinema.admin.type.AdminType;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,15 +19,13 @@ public class SignUp {
 
     private String username;
     private String password;
-    private String phone;
-    private MemberType memberType;
+    private AdminType adminType;
 
-    public Member toEntity() {
-      return Member.builder()
+    public Admin toEntity() {
+      return Admin.builder()
           .username(this.getUsername())
           .password(this.getPassword())
-          .phone(this.getPhone())
-          .memberType(this.getMemberType())
+          .adminType(this.getAdminType())
           .build();
     }
   }
@@ -41,13 +39,13 @@ public class SignUp {
 
     private String username;
     private LocalDateTime regDate;
-    private MemberType memberType;
+    private AdminType adminType;
 
-    public static Response fromEntity(Member member) {
+    public static Response fromEntity(Admin admin) {
       return Response.builder()
-          .username(member.getUsername())
-          .regDate(member.getRegDate())
-          .memberType(member.getMemberType())
+          .username(admin.getUsername())
+          .regDate(admin.getRegDate())
+          .adminType(admin.getAdminType())
           .build();
     }
   }

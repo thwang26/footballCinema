@@ -19,27 +19,30 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final JwtAuthenticationFilter authenticationFilter;
+  private final JwtAuthenticationFilter authenticationFilter;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .httpBasic().disable()
-                .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                // rest api 인증
-                .and()
-                    .authorizeRequests()
-                        .antMatchers("/**/sign-up", "/**/sign-in").permitAll()
-                // 실제 권한제어, 모든 권한을 주겠다
-                .and()
-                    .addFilterBefore(this.authenticationFilter, UsernamePasswordAuthenticationFilter.class);
-    }
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http
+        .httpBasic().disable()
+        .csrf().disable()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        // rest api 인증
+        .and()
+        .authorizeRequests()
+        .antMatchers("/**/sign-up", "/**/sign-in").permitAll()
+        // 실제 권한제어, 모든 권한을 주겠다
+        .and()
+        .logout()
+        .logoutSuccessUrl("/auth/logout")
+        .and()
+        .addFilterBefore(this.authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+  }
 
-    // spring boot 2.x
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+  // spring boot 2.x
+  @Bean
+  @Override
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+  }
 }

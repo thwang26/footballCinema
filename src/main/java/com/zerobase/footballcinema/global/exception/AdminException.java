@@ -11,8 +11,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ErrorResponse {
+public class AdminException extends RuntimeException {
 
   private ErrorCode errorCode;
   private String errorMessage;
+
+  public AdminException(ErrorCode errorCode) {
+    this.errorCode = errorCode;
+    this.errorMessage = errorCode.getDescription();
+  }
 }

@@ -1,4 +1,4 @@
-package com.zerobase.footballcinema.member.dto;
+package com.zerobase.footballcinema.admin.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

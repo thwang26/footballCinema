@@ -36,10 +36,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .logout()
         .logoutSuccessUrl("/auth/logout")
         .and()
-        .oauth2Login()
-        .userInfoEndpoint()
-        .userService(customOAuth2UserService)
-        .and()
         .addFilterBefore(this.authenticationFilter, UsernamePasswordAuthenticationFilter.class);
   }
 

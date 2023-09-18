@@ -19,14 +19,14 @@ public class SignUp {
 
     private String username;
     private String password;
-    private String phone;
+    private String email;
     private MemberType memberType;
 
     public Member toEntity() {
       return Member.builder()
           .username(this.getUsername())
           .password(this.getPassword())
-          .phone(this.getPhone())
+          .email(this.getEmail())
           .memberType(this.getMemberType())
           .build();
     }

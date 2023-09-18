@@ -15,6 +15,12 @@ public class GlobalExceptionHandler {
     return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
   }
 
+  @ExceptionHandler(AdminException.class)
+  public ErrorResponse handleAdminException(AdminException e) {
+    log.error("{} is occurred.", e.getErrorCode());
+    return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
+  }
+
   @ExceptionHandler(UsernameNotFoundException.class)
   public String handleUsernameNotFoundException(UsernameNotFoundException e) {
     log.error("{} is occurred.", e.getMessage());
